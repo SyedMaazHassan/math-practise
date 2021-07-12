@@ -1,0 +1,385 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- bootstrap 4.3.1 -->
+  <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+  <!-- styles -->
+  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+  <!-- favicon -->
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <title>Practise mathematics</title>
+</head>
+<body>
+
+  <!-- LANDING -->
+  <div class="landing">
+    <!-- LANDING DECORATION -->
+    <div class="landing-decoration"></div>
+    <!-- /LANDING DECORATION -->
+
+    <!-- LANDING INFO -->
+    <div class="landing-info">
+      <!-- LOGO -->
+      <div class="logo">
+        <!-- ICON LOGO VIKINGER -->
+        <svg class="icon-logo-vikinger">
+          <use xlink:href="#svg-logo-vikinger"></use>
+        </svg>
+        <!-- /ICON LOGO VIKINGER -->
+      </div>
+      <!-- /LOGO -->
+
+      <!-- LANDING INFO PRETITLE -->
+      <h2 class="landing-info-pretitle">Welcome to</h2>
+      <!-- /LANDING INFO PRETITLE -->
+
+      <!-- LANDING INFO TITLE -->
+      <h1 class="landing-info-title">MATH-FLIX</h1>
+      <!-- /LANDING INFO TITLE -->
+
+      <!-- LANDING INFO TEXT -->
+      <p class="landing-info-text">A platform to provide a quality material to improve mathematics skills &amp; to provide extra ordinary material online for primary students!</p>
+      <!-- /LANDING INFO TEXT -->
+
+      <!-- TAB SWITCH -->
+      <div class="tab-switch mt-5">
+        <!-- TAB SWITCH BUTTON -->
+        <p class="tab-switch-button login-register-form-trigger" id="login-button">Login</p>
+        <!-- /TAB SWITCH BUTTON -->
+
+        <!-- TAB SWITCH BUTTON -->
+        <p class="tab-switch-button login-register-form-trigger active" id="register-button">Register</p>
+        <!-- /TAB SWITCH BUTTON -->
+      </div>
+      <!-- /TAB SWITCH -->
+    </div>
+    <!-- /LANDING INFO -->
+
+    <!-- LANDING FORM -->
+    <div class="landing-form">
+      <!-- FORM BOX -->
+      <div class="form-box login-register-form-element">
+        <!-- FORM BOX DECORATION -->
+        <img class="form-box-decoration overflowing" src="{% static 'img/landing/rocket.png' %}" alt="rocket">
+        <!-- /FORM BOX DECORATION -->
+
+        <!-- FORM BOX TITLE -->
+        <h2 class="form-box-title">Account Login</h2>
+        <!-- /FORM BOX TITLE -->
+    
+        <!-- FORM -->
+        <form class="form"  autocomplete="off" action="login" method="POST">
+          {% csrf_token %}
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="login_email">Email address</label>
+                <input type="text" id="login_email" name="login_email"  value="{{ login_email }}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="login_password">Password</label>
+                <input type="password" id="login_password" name="login_password" value="{{ login_password }}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <div class="form-row alert alert-success my-4" id="success-msg" style="border-radius: 10px; display: none;" role="alert">
+            
+          </div>          
+
+           <!-- FORM ROW -->
+           <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- CHECKBOX WRAP -->
+              <div class="checkbox-wrap">
+                <input type="checkbox" id="login_checkbox" name="login_checkbox">
+                <!-- CHECKBOX BOX -->
+                <div class="checkbox-box">
+                  <!-- ICON CROSS -->
+                  <svg class="icon-cross">
+                    <use xlink:href="#svg-cross"></use>
+                  </svg>
+                  <!-- /ICON CROSS -->
+                </div>
+                <!-- /CHECKBOX BOX -->
+                <label for="login_checkbox">Show password</label>
+              </div>
+              <!-- /CHECKBOX WRAP -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+
+          <p id="login-error" 
+              class="my-4"
+              style="
+                  text-align: left; 
+                  transition-duration:0.25s;
+                  color:#ed4337;"
+              >
+          </p>
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium secondary">Login to your Account!</button>
+              <!-- /BUTTON -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+        </form>
+        <!-- /FORM -->
+
+
+    
+        <!-- LINED TEXT -->
+        <!-- <p class="lined-text">Login with your Social Account</p> -->
+        <!-- /LINED TEXT -->
+    
+      </div>
+      <!-- /FORM BOX -->
+    
+      <!-- FORM BOX -->
+      <div class="form-box login-register-form-element">
+        <!-- FORM BOX DECORATION -->
+        <img class="form-box-decoration" src="{% static 'img/landing/rocket.png' %}" alt="rocket">
+        <!-- /FORM BOX DECORATION -->
+
+        <!-- FORM BOX TITLE -->
+        <h2 class="form-box-title">Create your Account!</h2>
+        <!-- /FORM BOX TITLE -->
+    
+        <!-- FORM -->
+        <form class="form mt-5" autocomplete="off" action="signup" method="POST">
+          {% csrf_token %}
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="name">First Name</label>
+                <input type="text" id="name" name="name" value="{{name}}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="l_name">Last Name</label>
+                <input type="text" id="l_name" name="l_name" value="{{l_name}}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+
+
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="email">Your Email</label>
+                <input type="text" id="email" name="email" value="{{email}}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+        
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="pass1">Password</label>
+                <input type="password" id="pass1" name="pass1" value="{{pass1}}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="pass2">Repeat Password</label>
+                <input type="password" id="pass2" name="pass2" value="{{pass2}}" required>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- CHECKBOX WRAP -->
+              <div class="checkbox-wrap">
+                <input type="checkbox" id="register-newsletter" name="register_newsletter">
+                <!-- CHECKBOX BOX -->
+                <div class="checkbox-box">
+                  <!-- ICON CROSS -->
+                  <svg class="icon-cross">
+                    <use xlink:href="#svg-cross"></use>
+                  </svg>
+                  <!-- /ICON CROSS -->
+                </div>
+                <!-- /CHECKBOX BOX -->
+                <label for="register-newsletter">Show password</label>
+              </div>
+              <!-- /CHECKBOX WRAP -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+
+          <p id="register-error" 
+              class="my-4"
+              style="
+                  text-align: left; 
+                  transition-duration:0.25s;
+                  color:#ed4337;"
+              >
+          </p>
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium primary">Register Now!</button>
+              <!-- /BUTTON -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+        </form>
+        <!-- /FORM -->
+    
+        <!-- FORM TEXT -->
+        <!-- <p class="form-text">You can create math exercises once you successfully registered on this platform!</p> -->
+        <!-- /FORM TEXT -->
+      </div>
+      <!-- /FORM BOX -->
+    </div>
+    <!-- /LANDING FORM -->
+  </div>
+  <!-- /LANDING -->
+
+<!-- app -->
+<script src="{% static 'js/utils/app.js' %}"></script>
+<!-- XM_Plugins -->
+<script src="{% static 'js/vendor/xm_plugins.min.js' %}"></script>
+<!-- form.utils -->
+<script src="{% static 'js/form/form.utils.js' %}"></script>
+<!-- landing.tabs -->
+<script src="{% static 'js/landing/landing.tabs.js' %}"></script>
+<!-- SVG icons -->
+<script src="{% static 'js/utils/svg-loader.js' %}"></script>
+
+<script>
+
+
+  $("#register-newsletter").on("change", function () {
+    let this_value = $(this).prop("checked");
+    if (this_value) {
+      $("#pass1, #pass2").prop("type", "text");
+    }else{
+      $("#pass1, #pass2").prop("type", "password");
+    }
+  });
+
+  $("#login_checkbox").on("change", function () {
+    let this_value = $(this).prop("checked");
+    if (this_value) {
+      $("#login_password").prop("type", "text");
+    }else{
+      $("#login_password").prop("type", "password");
+    }
+  });
+
+  var error_msg = "{% for message in messages %}{{message}}{% endfor %}".trim();
+  var x = "{{border}}";
+  var section = "{{section}}".trim();
+
+  if (section == "register") {
+    $("#name, #l_name, #email, #pass1, #pass2").parent().addClass("active");
+    $("#register-error").text(error_msg);
+    $("#register-button").click();
+
+    if(x=="register-email"){
+        $("#email").css(
+            'border-color', '#ed4337'
+        );
+    }else if(x=="register-password"){
+        $("#pass1, #pass2").css(
+            'border-color', '#ed4337'
+        );
+    }
+  }
+  
+  if (section == "login") {
+    if (error_msg != "Your account has been created successfully!") {
+      $("#login-error").text(error_msg);
+    }
+    $("#login_email, #login_password").parent().addClass("active");
+  }
+
+  if (error_msg == "Your account has been created successfully!") {
+      $("#success-msg").text(error_msg);
+      $("#success-msg").show();
+  }
+
+</script>
+
+</body>
+
+
+</html>
